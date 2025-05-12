@@ -1,103 +1,95 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from "framer-motion";
+import { Button } from "../components/ui/button";
+import { ChevronRight } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen w-full bg-[hsl(327,100%,97%)] flex flex-col items-center justify-center relative"
+      style={{
+        backgroundImage: 'radial-gradient(hsl(214,91%,78%) 2px, transparent 2px)',
+        backgroundSize: '30px 30px',
+        backgroundPosition: '0 0',
+      }}
+    >
+      {/* Logo - Top Left (Clickable) */}
+      <Link
+        href="/"
+        className="absolute top-4 left-4 md:top-8 md:left-8 flex items-center space-x-2 z-20 hover:opacity-90 transition-opacity"
+      >
+        <div className="w-12 h-12 bg-[hsl(214,100%,60%)] rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <span className="text-2xl md:text-3xl font-bold text-[hsl(214,100%,60%)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+          Evently
+        </span>
+      </Link>
+
+      {/* Auth Buttons - Top Right */}
+      {/* <div className="absolute top-4 right-4 md:top-8 md:right-8 flex items-center space-x-4 z-20">
+        <Link href="#login">
+          <Button variant="outline" className="border-[hsl(214,100%,60%)] text-[hsl(214,100%,60%)] hover:bg-[hsl(214,100%,60%)] hover:text-white transition-colors">
+            Login
+          </Button>
+        </Link>
+        <Link href="#signup">
+          <Button className="bg-[hsl(214,100%,60%)] text-white hover:bg-blue-600 transition-colors">
+            Sign up
+          </Button>
+        </Link>
+      </div> */}
+      
+      {/* Main Content */}
+      <div className="relative z-10 text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          Schedule Events with <span className="text-[hsl(214,100%,60%)]">Ease</span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+          Schedule meetings effortlessly with our intuitive booking platform
+        </p>
+        
+        <Button 
+          size="lg" 
+          className="inline-flex items-center justify-center px-8 py-6 text-xl font-medium rounded-md text-white bg-[hsl(214,100%,60%)] shadow-lg hover:bg-blue-600 transform hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 relative overflow-hidden"
+          style={{
+            position: "relative",
+            overflow: "hidden"
+          }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          <Link href="/dashboard"><span className="mr-2">Book Event</span></Link>
+          <ChevronRight className="h-5 w-5" />
+          <div 
+            className="absolute inset-0 pointer-events-none" 
+            style={{
+              background: "linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%)",
+              transform: "rotate(30deg) translateX(-300%)",
+              animation: "shine 3s infinite",
+              content: "''",
+              top: "-50%",
+              left: "-50%",
+              width: "200%",
+              height: "200%"
+            }}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </Button>
+      </div>
+
+      <style jsx global>{`
+        @keyframes shine {
+          0% { transform: rotate(30deg) translateX(-300%); }
+          100% { transform: rotate(30deg) translateX(300%); }
+        }
+      `}</style>
+    </motion.div>
   );
 }
