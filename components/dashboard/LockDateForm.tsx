@@ -1,5 +1,5 @@
 'use client';
-
+import { Info } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -18,6 +18,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
 import { useForm } from "react-hook-form";
@@ -148,7 +154,19 @@ export default function LockDateForm({ date, open, onSubmit, onClose }: Props) {
               name="daysToHold"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Days to Hold</FormLabel>
+                  <FormLabel>
+                    Days to Hold
+                    <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                        <Info size={14} className="text-muted-foreground cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent side="top">
+                        Holding event for more than a day may incur additional fees
+                        </TooltipContent>
+                    </Tooltip>
+                    </TooltipProvider>
+                  </FormLabel>
                   <FormControl>
                     <Input type="number" min={1} {...field} />
                   </FormControl>
